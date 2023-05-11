@@ -1,2 +1,24 @@
-# PMDB
-A PARKING MANAGEMENT SYSTEM AUTOMATES A PARKING SYSTEM. IT OPTIMIZES PARKING SPACE AND MAKES THE ENTIRE PROCESS EFFICIENT. IT PROVIDES REAL-TIME CAR PARKING INFORMATION SUCH AS AVAILABLE SLOTS DISPLAY, VEHICLE &amp; SLOT COUNTS, RESERVED PARKING, EASY PAYMENTS, REPORTS, PAYAND-PARK OPTIONS, AND A HOST OF OTHER FEATURES.
+-- Create the database
+CREATE DATABASE ParkingManagementSystem;
+
+-- Switch to the newly created database
+USE ParkingManagementSystem;
+
+-- Create table for parking spaces
+CREATE TABLE ParkingSpaces (
+    space_id INT PRIMARY KEY,
+    vehicle_type VARCHAR(50),
+    is_available BIT
+);
+
+-- Create table for payments
+CREATE TABLE Payments (
+    payment_id INT PRIMARY KEY,
+    space_id INT,
+    vehicle_type VARCHAR(50),
+    payment_amount DECIMAL(10, 2),
+    payment_method VARCHAR(50),
+    payment_date DATETIME,
+    FOREIGN KEY (space_id) REFERENCES ParkingSpaces(space_id)
+);
+
